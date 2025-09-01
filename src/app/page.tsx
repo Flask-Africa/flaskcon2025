@@ -11,7 +11,7 @@ export default function Home() {
           Coming Soon!
         </em>
         <Link
-          href="https://flaskcon.com.ng/"
+          href="https://2024.flaskcon.com.ng/"
           className="bg-black text-white px-5 py-4 rounded-xl inline-block mt-10 w-[60%]"
         >
           See 2024 Recap
