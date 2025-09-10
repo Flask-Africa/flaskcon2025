@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Hepta_Slab, Manrope } from "next/font/google";
+
 import "./globals.css";
 
-const hepta = Hepta_Slab({
-  variable: "--font-hepta",
-  subsets: ["latin"],
-});
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-});
+import { hepta, manrope, ppNeue } from "@/utils/fonts";
+import { Navbar } from "@/components/common/navbar";
+import { Footer } from "@/components/common/footer";
 
 export const metadata: Metadata = {
   title: "Flaskcon 2025",
@@ -23,8 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${hepta.variable} ${manrope.variable} antialiased`}>
+      <body
+        className={`${hepta.variable} ${manrope.variable} ${ppNeue.variable} antialiased`}
+      >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

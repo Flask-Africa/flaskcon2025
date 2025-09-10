@@ -9,9 +9,23 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-offblack: #1b1b1b;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-hepta: var(--font-hepta);
+  --font-neue: var(--font-pp-neue-machina);
+
+  --leading-full: 100%;
+  --tracking-1: 0.01em;
+  --tracking-2: 0.02em;
+  --tracking-0: 0em;
+  --tracking-neg1: -0.01em;
+  --tracking-neg2: -0.02em;
+  --tracking-neg3: -0.03em;
+  --tracking-neg4: -0.04em;
+  --tracking-neg5: -0.05em;
+  --flaskcon-gradient: 174.27deg, #534eff 10.52%, #c200fb 34.16%, #ec0868 50.42%,
+    #fc2f00 68.4%, #ec7d10 82.18%, #ffbc0a 97.17%;
 }
 
 @media (prefers-color-scheme: dark) {
