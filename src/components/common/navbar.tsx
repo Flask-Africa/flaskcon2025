@@ -16,7 +16,7 @@ export const Navbar = () => {
   return (
     <nav className="relative border-b-2 border-offblack">
       <div className="flex justify-between items-center bg-white px-5 py-6  relative z-20 max-w-[1440px] mx-auto lg:px-10 xl:px-25 ">
-        <Logo />
+        <Logo className="w-[140px] lg:w-auto" />
         <ul className="gap-x-5 hidden md:flex">
           <li>
             <Link

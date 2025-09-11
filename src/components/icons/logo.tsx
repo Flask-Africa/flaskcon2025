@@ -1,4 +1,4 @@
-export const Logo = () => {
+export const Logo: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <svg
       width="185"
@@ -6,6 +6,7 @@ export const Logo = () => {
       viewBox="0 0 185 54"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <g clip-path="url(#clip0_59_863)">
         <path
