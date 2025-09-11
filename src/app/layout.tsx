@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
-import { hepta, manrope, ppNeue } from "@/utils/fonts";
+import { hepta, manrope, ppNeue, ppNeueInktrap } from "@/utils/fonts";
 import { Navbar } from "@/components/common/navbar";
 import { Footer } from "@/components/common/footer";
 
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${hepta.variable} ${manrope.variable} ${ppNeue.variable} antialiased`}
+        className={`${hepta.variable} ${manrope.variable} ${ppNeue.variable} ${ppNeueInktrap.variable} antialiased`}
       >
         <Navbar />
         {children}

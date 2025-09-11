@@ -1,6 +1,4 @@
 import { twMerge } from "tailwind-merge";
-import bulidingonLastYear from "@/assets/images/building-on-last-year.png";
-import Image from "next/image";
 
 export const SponsorshipPartner = () => {
   const pros = [
@@ -22,30 +20,33 @@ export const SponsorshipPartner = () => {
   ];
   return (
     <section className="font-neue">
-      <h2 className="text-center font-extrabold text-4xl leading-[150%] tracking-neg5 text-offblack mb-[60px]">
+      <h2 className="text-center font-extrabold text-4xl leading-[150%] tracking-neg5 text-offblack mb-[60px] font-inktrap lg:text-[61px] xl:mb-25">
         Why Partner With Us
       </h2>
 
-      <div className="border-x-2 border-black pb-[100px]">
+      <div className="border-x-2 border-black pb-[100px] lg:flex">
         {pros.map((pro, idx) => (
           <div
             key={idx}
             className={twMerge(
-              "p-10 text-white space-y-5 border-y-2 border-black border-collapse not-last:border-b-0",
+              "p-10 text-white border-y-2 border-black border-collapse not-last:border-b-0 md:py-16 lg:not-last:border-r-2 lg:not-last:border-b-2",
               pro.bgClassName
             )}
           >
-            <em className="not-italic block text-[21px] leading-[120%] tracking-neg5 font-extrabold">
-              0{idx + 1}
-            </em>
-            <h3 className="text-[21px] leading-[120%] tracking-neg5 font-extrabold">
-              {pro.title}
-            </h3>
-            <p className="text-base leading-[150%] tracking-neg5">{pro.text}</p>
+            <div className="max-w-[600px] mx-auto space-y-5">
+              <em className="not-italic block text-[21px] leading-[120%] tracking-neg5 font-extrabold">
+                0{idx + 1}
+              </em>
+              <h3 className="text-[21px] leading-[120%] tracking-neg5 font-extrabold font-inktrap">
+                {pro.title}
+              </h3>
+              <p className="text-base leading-[150%] tracking-neg5">
+                {pro.text}
+              </p>
+            </div>
           </div>
         ))}
       </div>
-      <Image src={bulidingonLastYear} alt="" className="" />
     </section>
   );
 };

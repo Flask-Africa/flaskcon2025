@@ -14,6 +14,7 @@
   --font-mono: var(--font-geist-mono);
   --font-hepta: var(--font-hepta);
   --font-neue: var(--font-pp-neue-machina);
+  --font-inktrap: var(--font-pp-neue-machina-inktrap);
 
   --leading-full: 100%;
   --tracking-1: 0.01em;

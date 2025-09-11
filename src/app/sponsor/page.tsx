@@ -7,12 +7,12 @@ import { SponsorshipBuilding } from "@/components/sponsorship/sponsorship-buildi
 
 const SponsorshipPage = () => {
   return (
-    <div className="px-5 pb-[60px]">
+    <div className="px-5 pb-[60px] lg:px-10 xl:px-25 max-w-[1440px] mx-auto lg:pb-[100px]">
       <SponsorshipHero />
       <Image
         src={flaskcon2024}
         alt="group picture of flaskcon 2024"
-        className="w-full my-[60px]"
+        className="w-full my-[60px] xl:my-25 object-cover"
       />
       <SponsorshipPartner />
       <SponsorshipBuilding />
