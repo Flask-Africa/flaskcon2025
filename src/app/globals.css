@@ -58,3 +58,8 @@
     cursor: pointer;
   }
 }
+
+.word,
+.word-mask {
+  overflow: hidden;
+}

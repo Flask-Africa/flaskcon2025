@@ -1,4 +1,35 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useRef } from "react";
+import { twMerge } from "tailwind-merge";
+
+gsap.registerPlugin(useGSAP);
+
 export const Logo: React.FC<{ className?: string }> = ({ className }) => {
+  const containerRef = useRef<SVGSVGElement>(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline();
+
+      tl.set(containerRef.current, {
+        autoAlpha: 1,
+      })
+        .set(".horn", {
+          svgOrigin: "189 35",
+        })
+        .from(".horn", {
+          scale: 0,
+        })
+        .from(".left", {
+          yPercent: -500,
+        })
+        .from(".right", {
+          yPercent: 500,
+        });
+    },
+    { scope: containerRef }
+  );
   return (
     <svg
       width="185"
@@ -6,9 +37,10 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
       viewBox="0 0 185 54"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={twMerge("overflow-hidden invisible", className)}
+      ref={containerRef}
     >
-      <g clip-path="url(#clip0_59_863)">
+      <g className="horn origin-center" clipPath="url(#clip0_59_863)">
         <path
           d="M109.885 9.01769C110.186 9.03268 110.365 9.36258 110.21 9.62297L108.257 12.9286L104.08 20.0103C104.006 20.1372 103.868 20.2139 103.722 20.2083L98.2455 20.0414C98.0374 20.0355 97.869 19.873 97.8582 19.6663C97.7511 17.6314 98.1168 15.174 98.5319 13.2477L98.4062 13.2391C97.9794 13.2221 97.6661 12.9899 97.6277 12.6788L97.6259 12.6422L97.4546 9.39944C97.4462 9.17431 97.5802 8.92995 97.821 8.75336C98.0593 8.58204 98.4059 8.47585 98.7056 8.48694L109.885 9.01769Z"
           fill="black"
@@ -71,60 +103,74 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
         />
       </g>
       <path
+        className="left"
         d="M79.5745 33.6766V22.973H81.4912V24.7605L81.1682 26.0527H81.7066C82.1373 24.1144 83.4941 22.7576 85.82 22.7576C88.2537 22.7576 89.8474 24.179 89.8474 27.1941V33.6766H87.9521V27.4526C87.9521 25.2343 87.0907 24.3944 85.2816 24.3944C83.0418 24.3944 81.4912 26.0958 81.4912 28.9817V33.6766H79.5745Z"
         fill="#1B1B1B"
       />
       <path
         d="M66.7185 28.314C66.7185 25.1482 68.9798 22.7576 72.4041 22.7576C75.8069 22.7576 78.0682 25.1482 78.0682 28.314C78.0682 31.5014 75.8069 33.892 72.4041 33.892C68.9798 33.892 66.7185 31.5014 66.7185 28.314ZM68.6137 28.314C68.6137 30.4892 69.949 32.2552 72.4041 32.2552C74.8378 32.2552 76.173 30.4892 76.173 28.314C76.173 26.1604 74.8378 24.3944 72.4041 24.3944C69.949 24.3944 68.6137 26.1604 68.6137 28.314Z"
         fill="#1B1B1B"
+        className="left"
       />
       <path
         d="M58.5245 33.9135C54.0018 33.9135 51.3313 30.5323 51.3313 26.0743C51.3313 21.6378 54.0018 18.2565 58.5245 18.2565C62.4441 18.2565 65.0069 20.5825 65.4592 24.3513H63.4994C63.1548 21.5731 61.4104 19.9579 58.5245 19.9579C55.1002 19.9579 53.3127 22.4777 53.3127 26.0743C53.3127 29.6924 55.1002 32.2122 58.5245 32.2122C61.4104 32.2122 63.1548 30.5754 63.4994 27.7972H65.4592C65.0069 31.5876 62.4441 33.9135 58.5245 33.9135Z"
         fill="#1B1B1B"
+        className="left"
       />
       <path
         d="M41.0991 33.6766V17.8474H43.0159V27.3665H44.1788L48.2708 22.973H50.6613L45.7725 28.1633L50.6182 33.6766H48.2277L44.0927 28.9171H43.0159V33.6766H41.0991Z"
         fill="#1B1B1B"
+        className="left"
       />
       <path
         d="M35.7392 33.892C32.5518 33.892 30.6997 32.3844 30.6997 29.7354H32.6165C32.6165 31.5014 33.7794 32.3844 35.7608 32.3844C37.2683 32.3844 38.0436 31.9106 38.0436 30.8123C38.0436 30.08 37.5914 29.6493 36.4715 29.3478L33.6071 28.5079C32.4011 28.1633 31.1304 27.388 31.1304 25.6866C31.1304 23.8129 32.6811 22.7576 35.2224 22.7576C37.979 22.7576 39.7019 24.0283 39.7019 26.3542H37.7852C37.7852 24.9328 36.8807 24.2436 35.2439 24.2436C33.8656 24.2436 33.0256 24.7174 33.0256 25.6651C33.0256 26.3542 33.4994 26.7849 34.5547 27.0865L37.053 27.7972C38.862 28.314 39.9604 29.197 39.9604 30.8553C39.9604 32.7936 38.4959 33.892 35.7392 33.892Z"
         fill="#1B1B1B"
+        className="left"
       />
       <path
         d="M19.2036 30.7046C19.2036 29.0032 20.2374 27.8187 22.7787 27.5818L26.9783 27.1726C26.8921 25.2343 26.0091 24.3083 24.1139 24.3083C22.6279 24.3083 21.508 24.9974 21.3357 26.7849H19.4405C19.6774 24.3513 21.3142 22.7576 24.0924 22.7576C27.2152 22.7576 28.895 24.6744 28.895 27.4957V32.0398H30.4672V33.6766H28.5074C27.689 33.6766 27.2152 33.2028 27.2152 32.3844V31.8676L27.5167 30.7261H26.9783C26.5691 32.3629 25.4277 33.892 22.8217 33.892C19.6774 33.892 19.2036 31.8245 19.2036 30.7046ZM21.0988 30.4677C21.0988 31.6953 21.8957 32.3198 23.1232 32.3198C25.4492 32.3198 26.9783 30.683 26.9783 28.5294L23.1017 28.9386C21.788 29.0678 21.0988 29.4339 21.0988 30.4677Z"
         fill="#1B1B1B"
+        className="left"
       />
       <path
         d="M10.7283 33.6766V32.0399H13.7218V19.4841H11.482V17.8474H14.5187C15.2294 17.8474 15.6386 18.2135 15.6386 18.9242V32.0399H18.6322V33.6766H10.7283Z"
         fill="#1B1B1B"
+        className="left"
       />
       <path
         d="M0 33.677V18.4938H10.0791V20.1737H1.95982V25.6224H9.13146V27.2807H1.95982V33.677H0Z"
         fill="#1B1B1B"
+        className="left"
       />
       <path
         d="M173.736 30.7046C173.736 29.0032 174.77 27.8187 177.311 27.5818L181.511 27.1726C181.425 25.2343 180.542 24.3083 178.647 24.3083C177.161 24.3083 176.041 24.9974 175.868 26.7849H173.973C174.21 24.3513 175.847 22.7576 178.625 22.7576C181.748 22.7576 183.428 24.6744 183.428 27.4957V32.0398H185V33.6766H183.04C182.222 33.6766 181.748 33.2028 181.748 32.3844V31.8676L182.049 30.7261H181.511C181.102 32.3629 179.96 33.892 177.354 33.892C174.21 33.892 173.736 31.8245 173.736 30.7046ZM175.632 30.4677C175.632 31.6953 176.428 32.3198 177.656 32.3198C179.982 32.3198 181.511 30.683 181.511 28.5294L177.634 28.9386C176.321 29.0678 175.632 29.4339 175.632 30.4677Z"
         fill="#1B1B1B"
+        className="right"
       />
       <path
         d="M162.11 28.314C162.11 25.1912 164.134 22.7576 167.601 22.7576C169.755 22.7576 172.404 23.9637 172.662 27.0649H170.746C170.444 25.1051 169.152 24.3944 167.601 24.3944C165.189 24.3944 164.005 26.1604 164.005 28.314C164.005 30.4892 165.189 32.2552 167.601 32.2552C169.152 32.2552 170.444 31.5445 170.746 29.5847H172.662C172.404 32.6859 169.755 33.892 167.601 33.892C164.134 33.892 162.11 31.4584 162.11 28.314Z"
         fill="#1B1B1B"
+        className="right"
       />
       <path
         d="M154.312 33.6766V32.0399H157.284V24.6098H155.066V22.973H157.844C158.62 22.973 159.05 23.3391 159.05 24.2221V32.0399H162.044V33.6766H154.312ZM156.423 19.6995C156.423 18.8596 157.09 18.2565 157.93 18.2565C158.792 18.2565 159.481 18.8596 159.481 19.6995C159.481 20.5394 158.792 21.1424 157.93 21.1424C157.09 21.1424 156.423 20.5394 156.423 19.6995Z"
         fill="#1B1B1B"
+        className="right"
       />
       <path
         d="M146.65 24.459C146.65 23.4468 147.145 22.973 148.157 22.973H154.209V24.6098H148.567V33.6766H146.65V24.459Z"
         fill="#1B1B1B"
+        className="right"
       />
       <path
         d="M138.122 24.6098V22.973H140.448V21.4224C140.448 19.2472 141.567 17.8474 144.216 17.8474H146.069V19.4841H144.13C142.773 19.4841 142.364 20.1087 142.364 21.4655V22.973H145.466V24.6098H142.364V32.0399H145.466V33.6766H138.122V32.0399H140.448V24.6098H138.122Z"
         fill="#1B1B1B"
+        className="right"
       />
       <path
         d="M123.774 33.677L128.599 18.4938H132.798L137.644 33.677H135.598L133.767 27.8622H127.629L125.799 33.677H123.774ZM128.168 26.1824H133.229L130.968 19.0322H130.429L128.168 26.1824Z"
         fill="#1B1B1B"
+        className="right"
       />
       <defs>
         <linearGradient
@@ -135,9 +181,9 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           y2="9.14199"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#EC0868" />
-          <stop offset="0.466346" stop-color="#C200FB" />
-          <stop offset="1" stop-color="#534EFF" />
+          <stop stopColor="#EC0868" />
+          <stop offset="0.466346" stopColor="#C200FB" />
+          <stop offset="1" stopColor="#534EFF" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_59_863"
@@ -147,9 +193,9 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           y2="9.25071"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#EC0868" />
-          <stop offset="0.466346" stop-color="#C200FB" />
-          <stop offset="1" stop-color="#534EFF" />
+          <stop stopColor="#EC0868" />
+          <stop offset="0.466346" stopColor="#C200FB" />
+          <stop offset="1" stopColor="#534EFF" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_59_863"
@@ -159,9 +205,9 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           y2="27.0095"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#EC0868" />
-          <stop offset="0.466346" stop-color="#C200FB" />
-          <stop offset="1" stop-color="#534EFF" />
+          <stop stopColor="#EC0868" />
+          <stop offset="0.466346" stopColor="#C200FB" />
+          <stop offset="1" stopColor="#534EFF" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_59_863"
@@ -171,9 +217,9 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           y2="30.3347"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#EC0868" />
-          <stop offset="0.466346" stop-color="#C200FB" />
-          <stop offset="1" stop-color="#534EFF" />
+          <stop stopColor="#EC0868" />
+          <stop offset="0.466346" stopColor="#C200FB" />
+          <stop offset="1" stopColor="#534EFF" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_59_863"
@@ -183,9 +229,9 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           y2="47.4024"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#EC0868" />
-          <stop offset="0.466346" stop-color="#C200FB" />
-          <stop offset="1" stop-color="#534EFF" />
+          <stop stopColor="#EC0868" />
+          <stop offset="0.466346" stopColor="#C200FB" />
+          <stop offset="1" stopColor="#534EFF" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_59_863"
@@ -195,8 +241,8 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           y2="16.2002"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FBB03B" />
-          <stop offset="1" stop-color="#FFF500" />
+          <stop stopColor="#FBB03B" />
+          <stop offset="1" stopColor="#FFF500" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_59_863"
@@ -206,12 +252,12 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           y2="33.9034"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FFBC0A" />
-          <stop offset="0.173077" stop-color="#EC7D10" />
-          <stop offset="0.332086" stop-color="#FC2F00" />
-          <stop offset="0.539557" stop-color="#EC0868" />
-          <stop offset="0.727192" stop-color="#C200FB" />
-          <stop offset="1" stop-color="#534EFF" />
+          <stop stopColor="#FFBC0A" />
+          <stop offset="0.173077" stopColor="#EC7D10" />
+          <stop offset="0.332086" stopColor="#FC2F00" />
+          <stop offset="0.539557" stopColor="#EC0868" />
+          <stop offset="0.727192" stopColor="#C200FB" />
+          <stop offset="1" stopColor="#534EFF" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_59_863"
@@ -221,8 +267,8 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           y2="25.6625"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FBB03B" />
-          <stop offset="1" stop-color="#FFF500" />
+          <stop stopColor="#FBB03B" />
+          <stop offset="1" stopColor="#FFF500" />
         </linearGradient>
         <linearGradient
           id="paint8_linear_59_863"
@@ -232,12 +278,12 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
           y2="30.987"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#534EFF" />
-          <stop offset="0.272808" stop-color="#C200FB" />
-          <stop offset="0.460443" stop-color="#EC0868" />
-          <stop offset="0.667914" stop-color="#FC2F00" />
-          <stop offset="0.826923" stop-color="#EC7D10" />
-          <stop offset="1" stop-color="#FFBC0A" />
+          <stop stopColor="#534EFF" />
+          <stop offset="0.272808" stopColor="#C200FB" />
+          <stop offset="0.460443" stopColor="#EC0868" />
+          <stop offset="0.667914" stopColor="#FC2F00" />
+          <stop offset="0.826923" stopColor="#EC7D10" />
+          <stop offset="1" stopColor="#FFBC0A" />
         </linearGradient>
         <clipPath id="clip0_59_863">
           <rect
