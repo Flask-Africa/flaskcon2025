@@ -54,7 +54,7 @@ export const SponsorshipImage = () => {
         style={{
           maskImage: `url('${rectangleMask.src}')`,
           maskRepeat: "no-repeat",
-          maskSize: `290px 800px`,
+          maskSize: `290px 1000px`,
         }}
         animate={{
           maskPosition: `${mouseOffsetX - 150}px`,
