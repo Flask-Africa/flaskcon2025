@@ -32,7 +32,7 @@ export const Navbar = () => {
         charsClass: "chars",
       });
 
-      const tl = gsap.timeline({ delay: 2 });
+      const tl = gsap.timeline({});
       tl.set(".events-link", {
         autoAlpha: 1,
       })
@@ -43,12 +43,12 @@ export const Navbar = () => {
           eventSplit.chars,
           {
             yPercent: 100,
-            stagger: 0.04,
+            stagger: 0.02,
             ease: "power4",
           },
           {
             yPercent: 0,
-            stagger: 0.04,
+            stagger: 0.02,
             ease: "power4",
           }
         )
@@ -56,12 +56,12 @@ export const Navbar = () => {
           speakerSplit.chars,
           {
             yPercent: 100,
-            stagger: 0.04,
+            stagger: 0.02,
             ease: "power4",
           },
           {
             yPercent: 0,
-            stagger: 0.04,
+            stagger: 0.02,
             ease: "power4",
           },
           "<0.2"

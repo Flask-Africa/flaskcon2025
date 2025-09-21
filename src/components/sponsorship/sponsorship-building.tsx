@@ -1,5 +1,7 @@
 "use client";
 import bulidingonLastYear from "@/assets/images/building-on-last-year.png";
+import gridBg from "@/assets/images/grid-bg.png";
+import blocks from "@/assets/images/blocks.png";
 import { useGSAP } from "@gsap/react";
 import NumberFlow from "@number-flow/react";
 import gsap from "gsap";
@@ -39,17 +41,43 @@ export const SponsorshipBuilding = () => {
           setSpeakersCount(12);
         },
       });
+
+      const parallaxTl = gsap.timeline({});
+      parallaxTl.fromTo(
+        ".blocks",
+        {
+          yPercent: -80,
+        },
+        {
+          yPercent: -20,
+        }
+      );
+
+      ScrollTrigger.create({
+        trigger: ".grid-container",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+        animation: parallaxTl,
+      });
     },
     { scope: containerRef }
   );
 
   return (
     <div ref={containerRef} className="lg:flex">
-      <Image
-        src={bulidingonLastYear}
-        alt=""
-        className="border-2 border-offblack lg:w-[35%] object-cover"
-      />
+      <div className="relative border-2 border-offblack overflow-hidden h-[105vw] lg:w-[35%] grid-container lg:h-auto">
+        <Image
+          src={gridBg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <Image
+          src={blocks}
+          alt=""
+          className="absolute w-[65.7%] left-1/2 top-1/2 -translate-x-1/2 object-cover blocks"
+        />
+      </div>
       <div className="border-2 border-black border-t-0 font-neue lg:border-t-2 lg:border-l-0">
         <div className="px-5 py-[60px] border-b-2 border-black lg:px-[60px] lg:pb-[120px]">
           <SlideText slideFrom="BOTTOM" showOnScroll viewportTrigger="70%">
