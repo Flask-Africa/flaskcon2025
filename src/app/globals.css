@@ -17,6 +17,11 @@
   --font-inktrap: var(--font-pp-neue-machina-inktrap);
 
   --leading-full: 100%;
+  --leading-110p: 110%;
+  --leading-120p: 120%;
+  --leading-130p: 130%;
+  --leading-140p: 140%;
+  --leading-150p: 150%;
   --tracking-1: 0.01em;
   --tracking-2: 0.02em;
   --tracking-0: 0em;
