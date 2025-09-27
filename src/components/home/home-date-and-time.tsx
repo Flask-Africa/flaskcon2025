@@ -1,5 +1,6 @@
 import Image from "next/image";
 import calendar from "@/assets/svg/calendar.svg";
+import { Counter } from "./counter";
 
 export const HomeDateAndTime = () => {
   return (
@@ -25,40 +26,7 @@ export const HomeDateAndTime = () => {
           </p>
         </div>
       </div>
-      <div className="px-5 py-[70.5] font-neue outline-2 outline-black rounded-t-[40px] flex justify-between items-center">
-        <div className="flex flex-col items-center">
-          <em className="not-italic font-extrabold text-[36px] leading-full tracking-neg3 text-offblack">
-            00
-          </em>
-          <em className="uppercase not-italic leading-full tracking-neg3">
-            days
-          </em>
-        </div>
-        <div className="flex flex-col items-center">
-          <em className="not-italic font-extrabold text-[36px] leading-full tracking-neg3 text-offblack">
-            00
-          </em>
-          <em className="uppercase not-italic leading-full tracking-neg3">
-            hours
-          </em>
-        </div>
-        <div className="flex flex-col items-center">
-          <em className="not-italic font-extrabold text-[36px] leading-full tracking-neg3 text-offblack">
-            00
-          </em>
-          <em className="uppercase not-italic leading-full tracking-neg3">
-            minutes
-          </em>
-        </div>
-        <div className="flex flex-col items-center">
-          <em className="not-italic font-extrabold text-[36px] leading-full tracking-neg3 text-offblack">
-            00
-          </em>
-          <em className="uppercase not-italic leading-full tracking-neg3">
-            seconds
-          </em>
-        </div>
-      </div>
+      <Counter />
     </section>
   );
 };
