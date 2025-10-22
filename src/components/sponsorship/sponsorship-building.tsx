@@ -1,5 +1,4 @@
 "use client";
-import bulidingonLastYear from "@/assets/images/building-on-last-year.png";
 import gridBg from "@/assets/images/grid-bg.png";
 import blocks from "@/assets/images/blocks.png";
 import { useGSAP } from "@gsap/react";

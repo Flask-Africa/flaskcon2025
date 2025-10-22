@@ -28,7 +28,7 @@ export const Navbar = () => {
       gsap.set(".mobile-menu", { autoAlpha: 1 });
       gsap.to(".mobile-menu", {
         height: "auto",
-        ease: "bounce",
+        ease: "power3",
       });
       setIsMenuOpen(true);
     }
@@ -48,9 +48,12 @@ export const Navbar = () => {
       });
 
       const tl = gsap.timeline({});
-      tl.set(".events-link", {
-        autoAlpha: 1,
+      tl.to(containerRef.current, {
+        top: "20px",
       })
+        .set(".events-link", {
+          autoAlpha: 1,
+        })
         .set(".speakers-link", {
           autoAlpha: 1,
         })
@@ -84,11 +87,13 @@ export const Navbar = () => {
   return (
     <nav
       ref={containerRef}
-      className="fixed top-5 left-1/2 -translate-x-1/2 w-[80vw] max-w-[553px] z-20 lg:max-w-[600px]"
+      className="fixed -top-20 left-1/2 -translate-x-1/2 w-[80vw] max-w-[553px] z-20 lg:max-w-[600px]"
     >
       <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-black w-[93%] h-full rounded-full" />
-      <div className="flex justify-between items-center w-full bg-white py-3 px-5 border-2 border-black rounded-full relative z-30 lg:px-10">
-        <Logo className="w-[140px] lg:w-auto" />
+      <div className="flex justify-between items-center w-full bg-white py-1 md:py-3 px-5 border-2 border-black rounded-full relative z-30 lg:px-10">
+        <Link href="/">
+          <Logo className="w-[140px] lg:w-auto" />
+        </Link>
         <ul className="gap-x-5 hidden md:flex">
           <li>
             <Link

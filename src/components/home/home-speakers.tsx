@@ -1,115 +1,164 @@
-import Image from "next/image";
+"use client";
 
-import paul from "@/assets/images/speakers/paul.jpg";
-import babs from "@/assets/images/speakers/babs.jpg";
-import bakman from "@/assets/images/speakers/bakman.jpg";
-import bash from "@/assets/images/speakers/bash.jpg";
-import david from "@/assets/images/speakers/david.webp";
-import fortune from "@/assets/images/speakers/fortune.jpg";
-import gbolahan from "@/assets/images/speakers/gbolahan.jpg";
-import ifihan from "@/assets/images/speakers/ifihan.jpg";
-import izu from "@/assets/images/speakers/izu.jpg";
-import mustapha from "@/assets/images/speakers/mustapha.jpg";
-import nancy from "@/assets/images/speakers/nancy.jpg";
-import seun from "@/assets/images/speakers/seun.jpg";
-
-import { Talk } from "@/utils/types";
 import { Speaker } from "./speaker";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+import { SpeakerIT } from "@/utils/types";
+import {
+  flaskAtTheEdge,
+  speakers,
+  systemDesignJudges,
+  womenInFlaskPanel,
+} from "@/utils/constants";
+import { twMerge } from "tailwind-merge";
 
-const talks: Talk[] = [
-  {
-    image: paul,
-    name: "paul asalu | speaker & judge",
-    talk: "Flask and the Art of Making Things Simple",
-  },
-  {
-    image: bakman,
-    name: "emmanuel bakare | speaker & judge",
-    talk: "Building Bridges and Empowering Communities Through Open Source",
-  },
-  {
-    image: izu,
-    name: "izuchukwu uchegbu | speaker & judge",
-    talk: "High Performance Computing with Flask",
-  },
-  {
-    image: nancy,
-    name: "nancy g. areola",
-    talk: "Building Scalable Flask Applications",
-  },
-  {
-    image: ifihan,
-    name: "ifihanagbara oluseye",
-    talk: "Flask as a Machine Learning Gateway: Building a Multi-Model Inference Server",
-  },
-  {
-    image: seun,
-    name: "seun taiwo",
-    talk: "React Server-Side Rendering in Flask",
-  },
-  {
-    image: mustapha,
-    name: "mustapha moshood olawale",
-    talk: "Mapping the Future with Flask: Building Intelligent Geospatial Applications",
-  },
-  {
-    image: gbolahan,
-    name: "gbolahan kolawole",
-    talk: "Real-World Flask Projects: Lessons Learned",
-  },
-  {
-    image: fortune,
-    name: "fortune adekogbe",
-    talk: "Navigating Challenges in Serving Large Language Models via Flask",
-  },
-  {
-    image: bash,
-    name: "emmanuel bashorun",
-    talk: "Flask Design Patterns for Clean Code",
-  },
-  {
-    image: david,
-    name: "david carmichael",
-    talk: "Flask Today and Tomorrow: Recent Changes and the Pallets Ecosystem",
-  },
-  {
-    image: babs,
-    name: "babatunde hammed",
-    talk: "Building Interledger-Powered Applications with Flask and Chimoney API",
-  },
-];
+gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
 export const HomeSpeakers = () => {
   return (
     <div className="border-t-2 border-black ">
       <section className="font-inktrap px-4 lg:px-10 xl:px-25 max-w-[1440px] mx-auto">
         <div className="px-4 border-x-2 border-black">
-          <div className="px-5 py-15 xl:px-15 xl:py-[110px] xl:pb-[100px]">
-            <div className="md:flex md:gap-x-10 lg:justify-end lg:mb-25">
-              <h2 className="text-offblack font-extrabold text-4xl leading-120p tracking-neg5 mb-15 md:shrink-0 max-w-[300px] lg:max-w-[630px] lg:text-[61px] lg:mb-0 lg:self-end">
-                Our Amazing Speakers and Judges
-              </h2>
-              <div>
-                <p className="text-offblack leading-150p tracking-neg3 mb-5">
-                  Inspire, teach, and connect with the community. If you&apos;re
+          <SpeakingSection
+            title="Our Amazing Speakers"
+            subtext="Inspire, teach, and connect with the community. If you're
                   passionate about backend, data science, or ML with Flask,
-                  share your ideas with us!
-                </p>
-                <button className="w-[203px] h-[63px] font-inktrap inline-block mb-25 lg:mb-0">
-                  <div className="w-[199px] h-[55px] text-white text-[21px] bg-[#C200FB] flex justify-center items-center rounded-full font-extrabold leading-full tracking-neg5 border border-offblack relative after:absolute after:top-2 after:left-[5px] after:h-full after:w-full after:-z-10 after:rounded-full after:border after:border-offblack after:bg-black">
-                    <span className="relative top-[2px]">Apply To Speak</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-            <div className="space-y-15 md:grid md:grid-cols-3 md:gap-x-6 md:space-y-0 md:gap-y-15">
-              {talks.map((talk, idx) => (
-                <Speaker key={idx} talk={talk} />
-              ))}
-            </div>
-          </div>
+                  share your ideas with us!"
+            buttonText="Apply To Speak"
+            speakers={speakers}
+          />
+          <SpeakingSection
+            title="Women In Flask Panel Session"
+            speakers={womenInFlaskPanel}
+          />
+          <SpeakingSection
+            title="Flask at The Edge Panel Session"
+            speakers={flaskAtTheEdge}
+          />
+          <SpeakingSection
+            title="System Design Judges"
+            speakers={systemDesignJudges}
+          />
         </div>
       </section>
+    </div>
+  );
+};
+
+const SpeakingSection: React.FC<{
+  title: string;
+  subtext?: string;
+  buttonText?: string;
+  speakers: SpeakerIT[];
+}> = ({ title, buttonText, subtext, speakers }) => {
+  const containerRef = useRef(null);
+  useGSAP(
+    () => {
+      const titleSplit = SplitText.create(".title", {
+        type: "lines, words",
+        mask: "lines",
+      });
+      let textSplit, btnTextSplit;
+      if (subtext) {
+        textSplit = SplitText.create(".text", {
+          type: "lines, words",
+          mask: "lines",
+        });
+        btnTextSplit = SplitText.create(".btn-text", {
+          type: "lines, words",
+          mask: "lines",
+        });
+      }
+
+      const tl = gsap.timeline({ paused: true });
+      tl.from(titleSplit.lines, {
+        yPercent: 100,
+        ease: "power3",
+        stagger: 0.06,
+      });
+      if (subtext) {
+        tl.from(
+          textSplit!.lines,
+          {
+            yPercent: 100,
+            ease: "power2",
+            stagger: 0.06,
+          },
+          "<"
+        )
+          .from(
+            ".btn",
+            {
+              yPercent: 100,
+              ease: "power2",
+            },
+            "<0.2"
+          )
+          .from(
+            btnTextSplit!.lines,
+            {
+              yPercent: -100,
+              ease: "power1",
+              stagger: 0.06,
+            },
+            "<0.3"
+          );
+      }
+
+      ScrollTrigger.create({
+        trigger: ".title",
+        start: "top 70%",
+        animation: tl,
+      });
+    },
+    { scope: containerRef }
+  );
+  return (
+    <div
+      ref={containerRef}
+      className="px-5 pt-15 pb-10 xl:px-15 xl:py-[110px] xl:pb-[50px]"
+    >
+      <div
+        className={twMerge(
+          "md:flex md:gap-x-10 lg:justify-end lg:mb-25",
+          !subtext && "lg:justify-start pl-[30px]"
+        )}
+      >
+        <h2
+          className={twMerge(
+            "text-offblack font-extrabold text-4xl leading-120p tracking-neg5 mb-15 md:shrink-0 max-w-[300px] lg:max-w-[630px] lg:text-[61px] lg:mb-0 lg:self-end title",
+            !subtext && "lg:w-[600px]"
+          )}
+        >
+          {title}
+        </h2>
+        <div className="lg:w-[250px]">
+          {!!subtext && (
+            <p className="text-offblack leading-150p tracking-neg3 mb-5 text">
+              {subtext}
+            </p>
+          )}
+          {!!buttonText && (
+            <div className="overflow-clip">
+              <button className="w-[203px] h-[70px] font-inktrap inline-block mb-25 lg:mb-0 btn">
+                <div className="w-[199px] h-[55px] text-white text-[21px] bg-[#C200FB] flex justify-center items-center rounded-full font-extrabold leading-full tracking-neg5 border border-offblack relative after:absolute after:top-2 after:left-[5px] after:h-full after:w-full after:-z-10 after:rounded-full after:border after:border-offblack after:bg-black">
+                  <span className="relative top-[2px] btn-text">
+                    {buttonText}
+                  </span>
+                </div>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="space-y-15 md:grid md:grid-cols-3 md:gap-x-6 md:space-y-0 md:gap-y-15">
+        {speakers.map((speaker, idx) => (
+          <Speaker key={idx} speaker={speaker} />
+        ))}
+      </div>
     </div>
   );
 };

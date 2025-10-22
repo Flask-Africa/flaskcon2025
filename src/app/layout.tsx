@@ -5,6 +5,7 @@ import "./globals.css";
 import { hepta, manrope, ppNeue, ppNeueInktrap } from "@/utils/fonts";
 import { Navbar } from "@/components/common/navbar";
 import { Footer } from "@/components/common/footer";
+import { LayoutContainer } from "@/components/layout/layout-container";
 
 export const metadata: Metadata = {
   title: "Flaskcon 2025",
@@ -19,11 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${hepta.variable} ${manrope.variable} ${ppNeue.variable} ${ppNeueInktrap.variable} antialiased`}
+        className={`${hepta.variable} ${manrope.variable} ${ppNeue.variable} ${ppNeueInktrap.variable} relative`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <LayoutContainer>
+          <Navbar />
+
+          {children}
+          <Footer />
+        </LayoutContainer>
       </body>
     </html>
   );
