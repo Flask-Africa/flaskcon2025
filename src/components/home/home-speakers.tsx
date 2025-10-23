@@ -46,7 +46,7 @@ export const HomeSpeakers = () => {
             title="System Design Judges"
             speakers={systemDesignJudges}
           />
-          <SpeakingSection title="Our Hosts" speakers={hosts} />
+          <SpeakingSection title="Event Hosts" speakers={hosts} />
         </div>
       </section>
     </div>
