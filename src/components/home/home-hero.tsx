@@ -13,6 +13,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { usePreloaderContext } from "@/context/preloader-context";
+import Link from "next/link";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -187,25 +188,21 @@ export const HomeHero = () => {
       <div className="relative z-10 text-center pt-[54px] font-neue w-full max-w-[400px] mx-auto md:max-w-[700px] lg:max-w-[1000px] xl:max-w-[1200px]">
         <div className="absolute w-full h-full inset-0">
           <Image
-            priority
             src={angleBrackets}
             alt=""
             className="hero-image-1 invisible absolute top-[154px] -left-4 w-[106px] h-[68px] md:w-[180px] md:h-auto md:top-[85px] lg:w-[285px] lg:h-[182px]"
           />
           <Image
-            priority
             src={thunder}
             alt=""
             className="hero-image-2 invisible absolute top-[154px] -right-4 w-[66px] h-[68px] md:w-[120px] md:h-auto md:top-[85px] lg:w-[151px] lg:h-[155px] lg:right-4"
           />
           <Image
-            priority
             src={horn}
             alt=""
             className="hero-image-3 invisible absolute top-[284px] -left-4 w-[121px] h-[70px] md:w-[230px] md:h-auto md:top-[275px] md:-left-[50px] lg:w-[361px] lg:h-[208px]"
           />
           <Image
-            priority
             src={cloud}
             alt=""
             className="hero-image-4 invisible absolute top-[284px] -right-4 w-[107px] h-[68px] md:w-[190px] md:h-auto md:top-[275px] md:-right-[50px] lg:w-[246px] lg:h-[156px] lg:top-[330px]"
@@ -233,23 +230,29 @@ export const HomeHero = () => {
         </p>
         <div className="flex flex-col gap-y-5 items-center md:flex-row md:gap-y-0 md:gap-x-5 md:mx-auto md:justify-center">
           <div className="overflow-clip">
-            <button className="w-[187px] h-[70px] font-neue register-btn invisible">
+            <Link
+              href="https://attend.flaskcon.com.ng"
+              className="w-[187px] h-[70px] font-neue register-btn invisible inline-block"
+            >
               <div className="w-[183px] h-[55px] text-white text-[21px] bg-[#534EFF] flex justify-center items-center rounded-full font-extrabold leading-full tracking-neg5 border border-offblack relative after:absolute after:top-2 after:left-[5px] after:h-full after:w-full after:-z-10 after:rounded-full after:border after:border-offblack after:bg-black">
                 <span className="relative top-[2px] hero-btn-1 invisible">
                   Register Now
                 </span>
               </div>
-            </button>
+            </Link>
           </div>
           <div className="overflow-clip">
-            <button className="w-[228px] h-[70px] font-inktrap sponsor-btn invisible">
+            <Link
+              href="/sponsor"
+              className="w-[228px] h-[70px] font-inktrap sponsor-btn invisible inline-block"
+            >
               <div className="w-[223px] h-[55px] text-offblack text-[21px] bg-white flex justify-center items-center rounded-full font-extrabold leading-full tracking-neg5 border border-offblack relative after:absolute after:top-2 after:left-[5px] after:h-full after:w-full after:-z-10 after:rounded-full after:border after:border-offblack after:bg-linear-(--flaskcon-gradient)">
                 <span className="relative top-[2px] hero-btn-2 invisible">
                   {" "}
                   Become a Sponsor
                 </span>
               </div>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

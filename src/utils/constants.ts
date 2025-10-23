@@ -1,5 +1,5 @@
-// import abdulhafeez from "@/assets/images/speakers/abdulhafeez.jpeg";
-// import adaeze from "@/assets/images/speakers/adaeze.png";
+import abdulhafeez from "@/assets/images/speakers/abdulhafeez.jpg";
+import adaeze from "@/assets/images/speakers/adaeze.png";
 import ajilore from "@/assets/images/speakers/ajilore.jpg";
 import babs from "@/assets/images/speakers/babs.jpg";
 import bakman from "@/assets/images/speakers/bakman.jpg";
@@ -137,5 +137,18 @@ export const systemDesignJudges: SpeakerIT[] = [
     name: "Oluwatobi Akintunlese",
     image: oluwatobi,
     talk: "Senior Software Engineer @ Codematic",
+  },
+];
+
+export const hosts: SpeakerIT[] = [
+  {
+    image: abdulhafeez,
+    name: "Abdulhafeez Abdulraheem",
+    talk: "CTO @ Beeva AI",
+  },
+  {
+    image: adaeze,
+    name: "Adaeze Chukwu",
+    talk: "Head of Operations @ Spentrail ",
   },
 ];

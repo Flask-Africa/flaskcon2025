@@ -1,5 +1,6 @@
 "use client";
 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   createContext,
   PropsWithChildren,
@@ -38,12 +39,12 @@ export const PreloaderContextProvider: React.FC<PropsWithChildren> = ({
     });
   };
 
-  const play = useCallback(() => {
+  const play = () => {
     setIsLoaded(true);
     for (const key of callbackMap.keys()) {
       callbackMap.get(key)();
     }
-  }, [callbackMap]);
+  };
 
   const unregister = (key: string) => {
     setCallbackMap((prevMap) => {

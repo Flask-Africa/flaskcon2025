@@ -88,10 +88,10 @@ export const HomeDateAndTime = () => {
             </div>
 
             <div className="text-center font-neue md:text-left">
-              <em className="font-extrabold text-[21px] leading-full tracking-neg3 not-italic inline-block mb-1 location-1">
+              <em className="font-extrabold text-[21px] leading-full tracking-neg3 not-italic inline-block mb-1 location-1 md:text-left">
                 Zone Tech Park
               </em>
-              <p className="leading-150p tracking-neg5 location-2">
+              <p className="leading-150p tracking-neg5 location-2 md:text-left">
                 Plot 9 Gbagada Industrial Scheme, Beside UPS, Gbagada
                 Expressway, Nigeria
               </p>

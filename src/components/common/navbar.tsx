@@ -25,10 +25,6 @@ export const Navbar = () => {
   }, [pathname]);
 
   useEffect(() => {
-    console.log(isMenuOpen);
-  }, [isMenuOpen]);
-
-  useEffect(() => {
     if (!isMenuOpen) {
       const tl = gsap.timeline({});
       tl.to(".mobile-menu", {
@@ -150,9 +146,9 @@ export const Navbar = () => {
         <div className="flex flex-col font-neue">
           <Link
             className="py-5 border-b border-offblack text-center leading-[150%] tracking-neg5 text-offblack"
-            href="/sponsor"
+            href="/"
           >
-            Sponsorship
+            Event Schedule
           </Link>
           <Link
             className="py-5 border-b border-offblack text-center leading-[150%] tracking-neg5 text-offblack"
@@ -161,11 +157,11 @@ export const Navbar = () => {
             Speakers
           </Link>
           <div className="py-5 text-center">
-            <button className="w-[185px] h-[59px]">
+            <Link href="/sponsor" className="w-[185px] h-[59px] inline-block">
               <div className="w-[180px] h-[51px] text-offblack bg-white flex justify-center items-center rounded-full font-extrabold leading-full tracking-neg5 border border-offblack relative after:absolute after:top-2 after:left-[5px] after:h-full after:w-full after:-z-10 after:rounded-full after:border after:border-offblack after:bg-linear-(--flaskcon-gradient)">
                 Become a sponsor
               </div>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

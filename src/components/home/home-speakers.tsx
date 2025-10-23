@@ -9,6 +9,7 @@ import { useRef } from "react";
 import { SpeakerIT } from "@/utils/types";
 import {
   flaskAtTheEdge,
+  hosts,
   speakers,
   systemDesignJudges,
   womenInFlaskPanel,
@@ -45,6 +46,7 @@ export const HomeSpeakers = () => {
             title="System Design Judges"
             speakers={systemDesignJudges}
           />
+          <SpeakingSection title="Our Hosts" speakers={hosts} />
         </div>
       </section>
     </div>
