@@ -18,7 +18,7 @@ gsap.registerPlugin(useGSAP, SplitText);
 
 export const HomeHero = () => {
   const containerRef = useRef(null);
-  const { register } = usePreloaderContext();
+  const { register, isLoaded } = usePreloaderContext();
   useGSAP(
     () => {
       const heroText1Split = SplitText.create(".hero-text-1", {
@@ -38,7 +38,7 @@ export const HomeHero = () => {
         mask: "lines",
       });
 
-      const tl = gsap.timeline({ paused: true });
+      const tl = gsap.timeline({ paused: !isLoaded });
       tl.set(".bg-image-wrapper", { autoAlpha: 1 })
         .from(".bg-image-wrapper", {
           clipPath: "inset(50% 50% 50% 50%)",
@@ -147,7 +147,7 @@ export const HomeHero = () => {
           "<"
         );
 
-      register("home-hero", () => tl.play());
+      if (!isLoaded) register("home-hero", () => tl.play());
 
       gsap.set(".hero-text-1", {
         autoAlpha: 1,

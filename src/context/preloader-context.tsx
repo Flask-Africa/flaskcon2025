@@ -14,18 +14,21 @@ type PreloaderContextType = {
   unregister: (key: string) => void;
   register: (key: string, callback: Callback) => void;
   play: Callback;
+  isLoaded: boolean;
 };
 
 export const PreloaderContext = createContext<PreloaderContextType>({
   register: () => {},
   play: () => {},
   unregister: () => {},
+  isLoaded: false,
 });
 
 export const PreloaderContextProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {
   const [callbackMap, setCallbackMap] = useState(new Map());
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const register = (key: string, callback: Callback) => {
     setCallbackMap((prevMap) => {
@@ -36,6 +39,7 @@ export const PreloaderContextProvider: React.FC<PropsWithChildren> = ({
   };
 
   const play = useCallback(() => {
+    setIsLoaded(true);
     for (const key of callbackMap.keys()) {
       callbackMap.get(key)();
     }
@@ -50,7 +54,7 @@ export const PreloaderContextProvider: React.FC<PropsWithChildren> = ({
   };
 
   return (
-    <PreloaderContext.Provider value={{ register, play, unregister }}>
+    <PreloaderContext.Provider value={{ register, play, unregister, isLoaded }}>
       {children}
     </PreloaderContext.Provider>
   );

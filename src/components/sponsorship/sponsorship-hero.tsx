@@ -10,7 +10,7 @@ gsap.registerPlugin(useGSAP, SplitText);
 
 export const SponsorshipHero = () => {
   const containerRef = useRef<HTMLElement>(null);
-  const { register, unregister } = usePreloaderContext();
+  const { register, unregister, isLoaded } = usePreloaderContext();
   const preloaderKeys = useRef<string[]>([]);
 
   useGSAP(
@@ -26,7 +26,7 @@ export const SponsorshipHero = () => {
             mask: "lines",
             charsClass: "lines",
           });
-          const headerTl = gsap.timeline({ paused: true });
+          const headerTl = gsap.timeline({ paused: !isLoaded });
           headerTl
             .set(".sponsor-text", {
               autoAlpha: 1,
@@ -52,7 +52,7 @@ export const SponsorshipHero = () => {
                 ease: "power4",
               }
             );
-          register("sponsorhip-hero", () => headerTl.play());
+          if (!isLoaded) register("sponsorhip-hero", () => headerTl.play());
           preloaderKeys.current.push("sponsorhip-hero");
           return headerTl;
         },
