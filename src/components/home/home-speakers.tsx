@@ -20,7 +20,10 @@ gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 export const HomeSpeakers = () => {
   return (
     <div className="border-t-2 border-black ">
-      <section className="font-inktrap px-4 lg:px-10 xl:px-25 max-w-[1440px] mx-auto">
+      <section
+        id="speakers"
+        className="font-inktrap px-4 lg:px-10 xl:px-25 max-w-[1440px] mx-auto"
+      >
         <div className="px-4 border-x-2 border-black">
           <SpeakingSection
             title="Our Amazing Speakers"
@@ -135,15 +138,18 @@ const SpeakingSection: React.FC<{
         >
           {title}
         </h2>
-        <div className="lg:w-[250px]">
+        <div className="lg:w-[390px]">
           {!!subtext && (
             <p className="text-offblack leading-150p tracking-neg3 mb-5 text">
               {subtext}
             </p>
           )}
           {!!buttonText && (
-            <div className="overflow-clip">
-              <button className="w-[203px] h-[70px] font-inktrap inline-block mb-25 lg:mb-0 btn">
+            <div className="overflow-clip blur-[4px] cursor-not-allowed">
+              <button
+                className="w-[203px] h-[70px] font-inktrap inline-block mb-25 lg:mb-0 btn"
+                disabled
+              >
                 <div className="w-[199px] h-[55px] text-white text-[21px] bg-[#C200FB] flex justify-center items-center rounded-full font-extrabold leading-full tracking-neg5 border border-offblack relative after:absolute after:top-2 after:left-[5px] after:h-full after:w-full after:-z-10 after:rounded-full after:border after:border-offblack after:bg-black">
                   <span className="relative top-[2px] btn-text">
                     {buttonText}

@@ -1,10 +1,12 @@
 // import abdulhafeez from "@/assets/images/speakers/abdulhafeez.jpeg";
+// import adaeze from "@/assets/images/speakers/adaeze.png";
 import ajilore from "@/assets/images/speakers/ajilore.jpg";
 import babs from "@/assets/images/speakers/babs.jpg";
 import bakman from "@/assets/images/speakers/bakman.jpg";
 import bash from "@/assets/images/speakers/bash.jpg";
 import cynthia from "@/assets/images/speakers/cynthia.jpg";
 import ifihan from "@/assets/images/speakers/ifihan.jpg";
+import ijeoma from "@/assets/images/speakers/ijeoma.png";
 import isaac from "@/assets/images/speakers/isaac.png";
 import izu from "@/assets/images/speakers/izu.jpg";
 import kelechi from "@/assets/images/speakers/kelechi.jpg";
@@ -12,10 +14,11 @@ import kruse from "@/assets/images/speakers/kruse.jpg";
 import lordghost from "@/assets/images/speakers/lordghost.jpeg";
 import mark from "@/assets/images/speakers/mark.jpg";
 import motunrayo from "@/assets/images/speakers/motunrayo.jpg";
-// import noah from "@/assets/images/speakers/noah.jpg";
+import noah from "@/assets/images/speakers/noah.jpg";
 import oluwatobi from "@/assets/images/speakers/oluwatobi.jpg";
 import renee from "@/assets/images/speakers/renee.jpg";
 import seun from "@/assets/images/speakers/seun.jpg";
+import ubaydah from "@/assets/images/speakers/ubaydah.png";
 import victor from "@/assets/images/speakers/victor.jpg";
 import victory from "@/assets/images/speakers/victory.jpg";
 import { SpeakerIT } from "./types";
@@ -76,12 +79,12 @@ export const womenInFlaskPanel: SpeakerIT[] = [
   },
   {
     name: "Ubaydah Abdulwasiu",
-    image: motunrayo,
+    image: ubaydah,
     talk: "Software Engineer @ UCD",
   },
   {
     name: "Ijeoma Onuaju",
-    image: motunrayo,
+    image: ijeoma,
     talk: "Software Engineer @ Trustscrin",
   },
 ];
@@ -119,6 +122,11 @@ export const systemDesignJudges: SpeakerIT[] = [
     name: "Bashorun Emmanuel",
     image: bash,
     talk: "Software Engineer",
+  },
+  {
+    name: "Noah Useghan ",
+    image: noah,
+    talk: "Software Engineer @ Alerte Universal",
   },
   {
     name: "Emmanuel Bakare",
