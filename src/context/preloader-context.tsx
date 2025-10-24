@@ -1,13 +1,6 @@
 "use client";
 
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  createContext,
-  PropsWithChildren,
-  useCallback,
-  useContext,
-  useState,
-} from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 
 type Callback = () => void;
 

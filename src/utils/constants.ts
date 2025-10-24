@@ -8,13 +8,13 @@ import cynthia from "@/assets/images/speakers/cynthia.jpg";
 import ifihan from "@/assets/images/speakers/ifihan.jpg";
 import ijeoma from "@/assets/images/speakers/ijeoma.png";
 import isaac from "@/assets/images/speakers/isaac.png";
-import izu from "@/assets/images/speakers/izu.jpg";
+import izu from "@/assets/images/speakers/izu.png";
 import kelechi from "@/assets/images/speakers/kelechi.jpg";
 import kruse from "@/assets/images/speakers/kruse.jpg";
-import lordghost from "@/assets/images/speakers/lordghost.jpeg";
+import lordghost from "@/assets/images/speakers/lordghost.jpg";
 import mark from "@/assets/images/speakers/mark.jpg";
 import motunrayo from "@/assets/images/speakers/motunrayo.jpg";
-import noah from "@/assets/images/speakers/noah.jpg";
+import noah from "@/assets/images/speakers/noah.png";
 import oluwatobi from "@/assets/images/speakers/oluwatobi.jpg";
 import renee from "@/assets/images/speakers/renee.jpg";
 import seun from "@/assets/images/speakers/seun.jpg";
@@ -109,6 +109,11 @@ export const flaskAtTheEdge: SpeakerIT[] = [
     name: "Solomon Esenyi",
     image: lordghost,
     talk: "Researcher and Developer",
+  },
+  {
+    name: "Noah Useghan ",
+    image: noah,
+    talk: "Software Engineer @ Alerte Universal",
   },
 ];
 
