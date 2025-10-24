@@ -56,7 +56,7 @@ export const speakers: SpeakerIT[] = [
   },
   {
     image: izu,
-    name: "Izuchukwu Uchegbu | Software Engineer @ JP Morgan",
+    name: "Izu Uchegbu | Software Engineer @ JP Morgan",
     talk: "Temporal Milestoning with Flask and SQLModel",
   },
 ];
