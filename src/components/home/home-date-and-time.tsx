@@ -79,7 +79,7 @@ export const HomeDateAndTime = () => {
                 />
               </Slide>
               <em className="font-neue not-italic font-extrabold text-[27px] leading-full tracking-neg5 text-offblack flex flex-row gap-x-[11px] mb-4 md:inline-block lg:text-[36px] lg:mb-0 lg:h-[95px] date">
-                <span className="md:block">30</span>{" "}
+                <span className="md:block">8</span>{" "}
                 <span className="md:block">NOV</span>{" "}
                 <span className="tracking-[0.18em] lg:text-[21px] lg:relative lg:bottom-2">
                   2025
