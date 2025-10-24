@@ -141,7 +141,7 @@ export const HomeAbout = () => {
               <div className="px-5 py-10 border-2 border-y-0 border-black md:border-none lg:p-15">
                 <p className="font-inktrap leading-150p tracking-neg3 text-offblack text">
                   <span className="block">
-                    Flask Connect 2024 is a one-of-a-kind event for Flask
+                    Flaskcon Africa 2025 is a one-of-a-kind event for Flask
                     developers and enthusiasts.
                   </span>
                   <span className="block">
