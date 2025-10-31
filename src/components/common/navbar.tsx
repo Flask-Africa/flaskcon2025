@@ -88,7 +88,9 @@ export const Navbar = () => {
     >
       <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-black w-[93%] h-full rounded-full" />
       <div className="flex justify-between items-center w-full bg-white py-3 px-5 border-2 border-black rounded-full relative z-30 lg:px-10">
-        <Logo className="w-[140px] lg:w-auto" />
+        <Link href="/">
+          <Logo className="w-[140px] lg:w-auto" />
+        </Link>
         <ul className="gap-x-5 hidden md:flex">
           <li>
             <Link
@@ -101,9 +103,9 @@ export const Navbar = () => {
           <li>
             <Link
               className="speakers-link invisible py-5 text-center leading-[150%] tracking-neg5 text-offblack font-inktrap"
-              href="/speakers-and-contributions"
+              href="/contributors"
             >
-              Speakers & Contributions
+              Speakers & Contributors
             </Link>
           </li>
         </ul>
