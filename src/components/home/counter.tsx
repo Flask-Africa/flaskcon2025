@@ -1,13 +1,20 @@
 "use client";
 
+import { useGSAP } from "@gsap/react";
 import NumberFlow from "@number-flow/react";
-import { useEffect, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef, useState } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Counter = () => {
   const [hours, setHoursTillEvent] = useState(0);
   const [days, setDaysTillEvent] = useState(0);
   const [minutes, setMinutesTillEvent] = useState(0);
   const [seconds, setSecondsTillEvent] = useState(0);
+  const containerRef = useRef(null);
+  const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
 
   const setTimeValues = (secondsTillEvent: number) => {
     const secondsInOneDay = 60 * 60 * 24;
@@ -26,24 +33,41 @@ export const Counter = () => {
     setSecondsTillEvent(secondsTillEvent);
   };
 
-  useEffect(() => {
+  const kickoffTimer = () => {
     const currDate = new Date();
     const eventDate = new Date(2025, 10, 8, 9);
     let secondsTillEvent = Math.floor(
       (eventDate.getTime() - currDate.getTime()) / 1000
     );
     if (secondsTillEvent < 0) return;
+    if (intervalIdRef.current) {
+      clearInterval(intervalIdRef.current);
+    }
 
-    const intervalId = setInterval(() => {
+    intervalIdRef.current = setInterval(() => {
       secondsTillEvent--;
       setTimeValues(secondsTillEvent);
     }, 1000);
+  };
 
-    return () => clearInterval(intervalId);
-  }, []);
+  useGSAP(
+    () => {
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top bottom",
+        onEnter: () => {
+          kickoffTimer();
+        },
+      });
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <div className="outline-2 outline-black rounded-t-[40px] md:w-[calc(50%-2px)] md:rounded-tr-none md:border-none md:border-black">
+    <div
+      ref={containerRef}
+      className="outline-2 outline-black rounded-t-[40px] md:w-[calc(50%-2px)] md:rounded-tr-none md:border-none md:border-black"
+    >
       <div className="px-5 py-[70.5] font-neue   md:py-[54.5] flex justify-center items-center lg:px-10 xl:px-25 max-w-[720px] min-[1440px]:mr-auto">
         <div className="max-w-[400px] mx-auto flex justify-between items-center shrink-0 w-full lg:max-w-none">
           <div className="flex flex-col items-center">

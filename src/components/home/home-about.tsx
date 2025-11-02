@@ -1,3 +1,5 @@
+"use client";
+
 import aboutBg from "@/assets/images/about-bg.png";
 import Image from "next/image";
 
@@ -6,6 +8,11 @@ import keynotes from "@/assets/svg/keynotes.svg";
 import brainstorming from "@/assets/svg/brainstorming.svg";
 import networking from "@/assets/svg/networking.svg";
 import workshops from "@/assets/svg/workshops.svg";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import { SplitText } from "gsap/SplitText";
 
 const highlights = [
   {
@@ -37,24 +44,104 @@ const highlights = [
   },
 ];
 
+gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
+
 export const HomeAbout = () => {
+  const containerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const titleSplit = SplitText.create(".title", {
+        type: "lines, words",
+        mask: "lines",
+      });
+      const textSplit = SplitText.create(".text", {
+        type: "lines, words",
+        mask: "lines",
+      });
+      const highlightTitleSplit = SplitText.create(".highlight-title", {
+        type: "lines, words",
+        mask: "lines",
+      });
+      const agendaTextSplit = SplitText.create(".agenda-text", {
+        type: "lines, words",
+        mask: "lines",
+      });
+
+      const tl = gsap.timeline({ paused: true });
+      tl.from(titleSplit.lines, {
+        yPercent: 100,
+        ease: "power3",
+        stagger: 0.06,
+      }).from(
+        textSplit.lines,
+        {
+          yPercent: 100,
+          ease: "power3",
+          stagger: 0.06,
+        },
+        "<0.2"
+      );
+
+      ScrollTrigger.create({
+        trigger: ".title",
+        start: "top 70%",
+        animation: tl,
+      });
+
+      const highlightTl = gsap.timeline({ paused: true });
+      highlightTl
+        .from(highlightTitleSplit.lines, {
+          yPercent: -100,
+          ease: "power2",
+          stagger: 0.06,
+        })
+        .from(
+          ".agenda-btn",
+          {
+            yPercent: 100,
+            ease: "power2",
+          },
+          "<"
+        )
+        .from(
+          agendaTextSplit.lines,
+          {
+            yPercent: -100,
+            ease: "power1",
+          },
+          "<0.3"
+        );
+
+      ScrollTrigger.create({
+        trigger: ".highlight-title",
+        start: "top 70%",
+        animation: highlightTl,
+      });
+    },
+    { scope: containerRef }
+  );
+
   return (
-    <section className="mt-14 border-t-2 border-black lg:mt-25">
+    <section
+      ref={containerRef}
+      className="mt-14 border-t-2 border-black lg:mt-25"
+    >
       <div className="md:px-4 lg:px-10 xl:px-25 max-w-[1440px] mx-auto">
         <div className="md:border-x-2 md:border-b-2 md:border-black md:flex ">
           <div className="md:w-1/2 md:border-r-2">
             <div className="px-4 border-b-2 border-black md:px-0">
               <div className="px-5 py-10 border-2 border-y-0 border-black md:border-none lg:p-15">
-                <h2 className="font-inktrap font-extrabold text-[47px] leading-120p tracking-neg5 text-offblack max-w-[313px] lg:text-[61px]">
+                <h2 className="font-inktrap font-extrabold text-[47px] leading-120p tracking-neg5 text-offblack max-w-[313px] lg:text-[61px] title">
                   About Flaskcon
                 </h2>
               </div>
             </div>
             <div className="px-4 border-b-2 border-black md:px-0 md:border-none">
               <div className="px-5 py-10 border-2 border-y-0 border-black md:border-none lg:p-15">
-                <p className="font-inktrap leading-150p tracking-neg3 text-offblack">
+                <p className="font-inktrap leading-150p tracking-neg3 text-offblack text">
                   <span className="block">
-                    Flask Connect 2024 is a one-of-a-kind event for Flask
+                    Flaskcon Africa 2025 is a one-of-a-kind event for Flask
                     developers and enthusiasts.
                   </span>
                   <span className="block">
@@ -80,14 +167,18 @@ export const HomeAbout = () => {
       <div className="border-b-2 border-black">
         <div className="px-4 font-inktrap lg:px-10 xl:px-25 max-w-[1440px] mx-auto">
           <div className="border-2 border-y-0 border-black text-center py-25">
-            <h2 className="font-extrabold text-[47px] leading-120p tracking-neg5 text-offblack max-w-[271px] mx-auto mb-5 md:max-w-none lg:text-[61px]">
+            <h2 className="font-extrabold text-[47px] leading-120p tracking-neg5 text-offblack max-w-[271px] mx-auto mb-5 md:max-w-none lg:text-[61px] highlight-title">
               Event Highlights
             </h2>
-            <button className="w-[271px] h-[63px] font-inktrap">
-              <div className="w-[267px] h-[55px] text-white text-[21px] bg-[#EC0868] flex justify-center items-center rounded-full font-extrabold leading-full tracking-neg5 border border-offblack relative after:absolute after:top-2 after:left-[5px] after:h-full after:w-full after:-z-10 after:rounded-full after:border after:border-offblack after:bg-black">
-                <span className="relative top-[2px]">Explore Event Agenda</span>
-              </div>
-            </button>
+            <div className="overflow-clip">
+              <button className="w-[271px] h-[70px] font-inktrap agenda-btn">
+                <div className="w-[267px] h-[55px] text-white text-[21px] bg-[#EC0868] flex justify-center items-center rounded-full font-extrabold leading-full tracking-neg5 border border-offblack relative after:absolute after:top-2 after:left-[5px] after:h-full after:w-full after:-z-10 after:rounded-full after:border after:border-offblack after:bg-black">
+                  <span className="relative top-[2px] agenda-text">
+                    Explore Event Agenda
+                  </span>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -4,11 +4,14 @@ import { SponsorshipForm } from "./sponsorhip-form";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { SplitText } from "gsap/SplitText";
+import { usePreloaderContext } from "@/context/preloader-context";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
 export const SponsorshipHero = () => {
   const containerRef = useRef<HTMLElement>(null);
+  const { register, unregister, isLoaded } = usePreloaderContext();
+  const preloaderKeys = useRef<string[]>([]);
 
   useGSAP(
     () => {
@@ -23,7 +26,7 @@ export const SponsorshipHero = () => {
             mask: "lines",
             charsClass: "lines",
           });
-          const headerTl = gsap.timeline({});
+          const headerTl = gsap.timeline({ paused: !isLoaded });
           headerTl
             .set(".sponsor-text", {
               autoAlpha: 1,
@@ -49,10 +52,15 @@ export const SponsorshipHero = () => {
                 ease: "power4",
               }
             );
-
+          if (!isLoaded) register("sponsorhip-hero", () => headerTl.play());
+          preloaderKeys.current.push("sponsorhip-hero");
           return headerTl;
         },
       });
+
+      return () => {
+        preloaderKeys.current.forEach((key) => unregister(key));
+      };
     },
     { scope: containerRef }
   );

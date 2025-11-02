@@ -1,6 +1,6 @@
 "use client";
 
-import { Talk } from "@/utils/types";
+import { SpeakerIT } from "@/utils/types";
 import Image from "next/image";
 import speakerHorn from "@/assets/svg/speaker-horn.svg";
 import gsap from "gsap";
@@ -9,7 +9,7 @@ import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 
 gsap.registerPlugin(DrawSVGPlugin);
 
-export const Speaker: React.FC<{ talk: Talk }> = ({ talk }) => {
+export const Speaker: React.FC<{ speaker: SpeakerIT }> = ({ speaker }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,6 +25,8 @@ export const Speaker: React.FC<{ talk: Talk }> = ({ talk }) => {
         },
         {
           drawSVG: "100%",
+          ease: "power3",
+          duration: 0.3,
         }
       ).fromTo(
         selector(".down-path"),
@@ -33,6 +35,8 @@ export const Speaker: React.FC<{ talk: Talk }> = ({ talk }) => {
         },
         {
           drawSVG: "100%",
+          ease: "power3",
+          duration: 0.3,
         },
         0
       );
@@ -46,6 +50,8 @@ export const Speaker: React.FC<{ talk: Talk }> = ({ talk }) => {
         },
         {
           drawSVG: "0%",
+          ease: "power3",
+          duration: 0.3,
         }
       ).fromTo(
         selector(".down-path"),
@@ -54,6 +60,8 @@ export const Speaker: React.FC<{ talk: Talk }> = ({ talk }) => {
         },
         {
           drawSVG: "0%",
+          ease: "power3",
+          duration: 0.3,
         },
         0
       );
@@ -69,7 +77,7 @@ export const Speaker: React.FC<{ talk: Talk }> = ({ talk }) => {
   }, []);
 
   return (
-    <div className="pb-6 border-b-2 border-offblack max-w-[283px] mx-auto">
+    <div className="pb-6 border-b-2 border-offblack max-w-[283px] mx-auto w-full">
       <div className="text-center lg:text-left">
         <div
           ref={containerRef}
@@ -77,8 +85,8 @@ export const Speaker: React.FC<{ talk: Talk }> = ({ talk }) => {
         >
           <div className="absolute inset-0 w-full h-full z-10 border-black transition-all duration-300 group-hover:translate-x-[14.5px] group-hover:-translate-y-[14.5px]">
             <Image
-              src={talk.image}
-              alt={talk.name}
+              src={speaker.image}
+              alt={speaker.name}
               className="w-full h-full object-cover grayscale-100 transition-all group-hover:grayscale-0"
             />
             <div className="absolute inset-0 h-full w-full z-20">
@@ -111,9 +119,13 @@ export const Speaker: React.FC<{ talk: Talk }> = ({ talk }) => {
           <div className="absolute w-full h-full bg-linear-(--flaskcon-gradient) inset-0" />
         </div>
         <h4 className="font-inktrap font-extrabold leading-120p tracking-neg3 mb-2 uppercase">
-          {talk.name}
+          {speaker.name}
         </h4>
-        <em className="not-italic leading-150p tracking-neg2">{talk.talk}</em>
+        {!!speaker.talk && (
+          <em className="not-italic leading-150p tracking-neg2">
+            {speaker.talk}
+          </em>
+        )}
       </div>
     </div>
   );
