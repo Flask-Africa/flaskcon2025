@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
 
-export type Talk = {
+export type SpeakerIT = {
   image: StaticImageData;
   name: string;
-  talk: string;
+  talk?: string;
 };
