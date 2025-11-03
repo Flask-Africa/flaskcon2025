@@ -1,3 +1,4 @@
+"use client";
 import Image, { StaticImageData } from "next/image";
 import contributorBg from "@/assets/images/contributor-bg.png";
 import bakare from "@/assets/images/contributors/bakare.png";
@@ -31,6 +32,11 @@ import cross from "@/assets/svg/cross.svg";
 import diamonds from "@/assets/svg/diamonds.svg";
 import circle from "@/assets/svg/circle.svg";
 import circles from "@/assets/svg/circles.svg";
+import NameBg1 from "@/assets/images/contributors/name-bg-1.png";
+import NameBg2 from "@/assets/images/contributors/name-bg-2.png";
+import NameBtm1 from "@/assets/images/contributors/name-bottom-bg-1.png";
+import Badge from "@/assets/svg/flask-badge.svg";
+import { useState } from "react";
 
 export interface Contributor {
   name: string;
@@ -45,6 +51,8 @@ export interface Contributor {
 }
 
 export const ContributorTabs = () => {
+  const [activeContributor, setActiveContributor] =
+    useState<Contributor | null>();
   const contributorsData: Contributor[] = [
     {
       name: "Emmanuel Bakare",
@@ -253,36 +261,73 @@ export const ContributorTabs = () => {
     <section className="w-full border-t-2 border-black h-[150vh]">
       <div className="md:px-2 lg:px-4 xl:px-16 max-w-[1440px] h-full mx-auto">
         <div className="md:border-x-2 md:flex h-full w-full flex items-center justify-start gap-0">
-          <div className="w-[10%] h-full overflow-auto border-r-2 border-black">
-            {contributorsData.map((contributor, index) => (
-              <div
-                key={`contributor-${index}`}
-                className="h-[200px] w-full flex flex-col items-center justify-start"
-              >
-                <div className="w-full h-[70%] flex justify-center items-end">
-                  <Image
-                    src={contributor.image}
-                    alt=""
-                    className="w-full h-full object-cover grayscale"
-                  />
-                </div>
-                <div className="flex items-center justify-center bg-black w-full h-[30%]">
-                  <Image src={contributor.iconSrc} alt="" className="" />
-                </div>
-              </div>
-            ))}
+          <div className="w-[15%] h-full border-r-2 border-black overflow-hidden relative">
+            <div className="animate-marquee-vertical flex flex-col">
+              {contributorsData
+                .concat(contributorsData)
+                .map((contributor, index) => (
+                  <div
+                    key={`contributor-${index}`}
+                    onClick={() => setActiveContributor(contributor)}
+                    className="h-[200px] w-full flex flex-col items-center cursor-pointer justify-start group"
+                  >
+                    <div className="w-full h-[70%] relative flex justify-center items-end overflow-hidden">
+                      <Image
+                        src={contributor.image}
+                        alt={contributor.name}
+                        className="w-full h-full object-cover"
+                      />
+                      {activeContributor?.name !== contributor.name && (
+                        <div className="absolute top-0 left-0 w-full h-full bg-[#ffffff] mix-blend-saturation origin-top transition-all duration-300 group-hover:h-0"></div>
+                      )}
+                    </div>
+
+                    <div className="flex items-center justify-center bg-black w-full h-[30%]">
+                      <Image src={contributor.iconSrc} alt="" />
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
-          <div className="w-[44%] h-full border-r-2 border-black">
+
+          <div className="w-[44%] h-full border-r-2 border-black relative flex items-center justify-center">
             <Image
               src={contributorBg}
               alt=""
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover absolute top-0 left-0 z-[-1]"
             />
+            <div className="flex items-center justify-center w-[70%] h-[600px] relative">
+              <div className="bg-[#1B1B1B] w-full px-5 py-6 border-2 relative border-black flex items-center justify-center">
+                <span className="font-inktrap uppercase text-[21px] text-white font-extrabold">
+                  {activeContributor?.type}
+                </span>
+                <div className="absolute -right-8 top-1/2 -translate-y-1/2">
+                  <Image src={Badge} alt="" />
+                </div>
+              </div>
+            </div>
           </div>
           <div className="w-[46%] h-full">
-            <div className="w-full h-[44%] border-b-2 border-black"></div>
+            <div className="w-full h-[44%] border-b-2 border-black relative">
+              <Image
+                src={NameBg1}
+                alt=""
+                className="w-full h-full object-cover relative z-10"
+              />
+              <div className="absolute bottom-0 z-20 left-0 w-full h-32">
+                <Image
+                  src={NameBtm1}
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
             <div className="w-full h-[12%] border-b-2 border-black"></div>
-            <div className="w-full h-[44%] bg-black"></div>
+            <div className="w-full h-[44%] bg-black p-10">
+              <p className="font-neue text-[21px] text-white font-normal">
+                {activeContributor?.description}
+              </p>
+            </div>
           </div>
         </div>
       </div>
