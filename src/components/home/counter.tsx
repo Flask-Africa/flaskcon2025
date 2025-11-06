@@ -66,9 +66,9 @@ export const Counter = () => {
   return (
     <div
       ref={containerRef}
-      className="outline-2 outline-black rounded-t-[40px] md:w-[calc(50%-2px)] md:rounded-tr-none md:border-none md:border-black"
+      className="outline-2 outline-black rounded-t-[40px] md:w-[calc(50%-2px)] md:rounded-tr-none md:border-none md:border-black md:flex md:items-center"
     >
-      <div className="px-5 py-[70.5] font-neue   md:py-[54.5] flex justify-center items-center lg:px-10 xl:px-25 max-w-[720px] min-[1440px]:mr-auto">
+      <div className="px-5 py-[70.5] font-neue   md:py-[54.5] flex justify-center items-center lg:px-10 xl:px-25 max-w-[720px] min-[1440px]:mr-auto md:w-full">
         <div className="max-w-[400px] mx-auto flex justify-between items-center shrink-0 w-full lg:max-w-none">
           <div className="flex flex-col items-center">
             <em className="not-italic font-extrabold text-[36px] leading-full tracking-neg3 text-offblack lg:w-[90px] lg:inline-block lg:text-[61px]">

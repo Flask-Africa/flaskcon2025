@@ -1,5 +1,6 @@
 "use client";
 import flaskcon2024 from "@/assets/images/flaskcon-2024.jpg";
+import flaskcon2024Sm from "@/assets/images/flaskcon-2024-sm.jpg";
 import rectangleMask from "@/assets/svg/rectangle-mask.svg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -21,12 +22,10 @@ export const SponsorshipImage = () => {
 
       mm.add(
         {
-          // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
           isDesktop: `(min-width: ${breakpoint}px)`,
           isMobile: `(max-width: ${breakpoint - 1}px)`,
         },
         (context) => {
-          // context.conditions has a boolean property for each condition defined above indicating if it's matched or not.
           const { isMobile } = context.conditions as { isMobile: boolean };
 
           const tl = gsap.timeline({ paused: true });
@@ -80,32 +79,41 @@ export const SponsorshipImage = () => {
         clipPath: "inset(0%)",
       }}
     >
-      <Image
-        src={flaskcon2024}
-        alt="group picture of flaskcon 2024"
-        className="w-full object-cover border-2 border-black grayscale"
-      />
-      <motion.div
-        className="absolute inset-0 mask-wrapper hidden lg:block"
-        style={{
-          maskImage: `url('${rectangleMask.src}')`,
-          maskRepeat: "no-repeat",
-          maskSize: `290px 1000px`,
-        }}
-        animate={{
-          maskPosition: `${mouseOffsetX - 150}px`,
-        }}
-        transition={{
-          ease: "backOut",
-          type: "tween",
-        }}
-      >
+      <div className="lg:hidden">
         <Image
-          src={flaskcon2024}
+          src={flaskcon2024Sm}
           alt="group picture of flaskcon 2024"
           className="w-full object-cover border-2 border-black"
         />
-      </motion.div>
+      </div>
+      <div className="hidden lg:block">
+        <Image
+          src={flaskcon2024}
+          alt="group picture of flaskcon 2024"
+          className="w-full object-cover border-2 border-black grayscale"
+        />
+        <motion.div
+          className="absolute inset-0 mask-wrapper hidden lg:block"
+          style={{
+            maskImage: `url('${rectangleMask.src}')`,
+            maskRepeat: "no-repeat",
+            maskSize: `290px 1000px`,
+          }}
+          animate={{
+            maskPosition: `${mouseOffsetX - 150}px`,
+          }}
+          transition={{
+            ease: "backOut",
+            type: "tween",
+          }}
+        >
+          <Image
+            src={flaskcon2024}
+            alt="group picture of flaskcon 2024"
+            className="w-full object-cover border-2 border-black"
+          />
+        </motion.div>
+      </div>
     </div>
   );
 };
