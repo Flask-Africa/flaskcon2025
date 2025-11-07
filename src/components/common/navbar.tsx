@@ -180,7 +180,7 @@ export const Navbar = () => {
           </Link>
           <Link
             className="py-5 border-b border-offblack text-center leading-[150%] tracking-neg5 text-offblack"
-            href="/#speakers"
+            href="/contributors"
           >
             Speakers
           </Link>
