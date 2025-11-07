@@ -116,7 +116,7 @@ export const Navbar = () => {
   return (
     <nav
       ref={containerRef}
-      className="fixed -top-20 md:-top-40 left-1/2 -translate-x-1/2 w-[80vw] max-w-[553px] z-20 lg:max-w-[600px]"
+      className="fixed -top-20 md:-top-40 left-1/2 -translate-x-1/2 w-[80vw] max-w-[553px] z-80 lg:max-w-[700px]"
       onClick={() => setIsMenuOpen(false)}
     >
       <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-black w-[93%] h-full rounded-full" />
@@ -144,9 +144,9 @@ export const Navbar = () => {
           <li>
             <Link
               className="speakers-link invisible py-5 text-center leading-[150%] tracking-neg5 text-offblack font-inktrap"
-              href="/#speakers"
+              href="/contributors"
             >
-              Speakers
+              Speakers & Contributors
             </Link>
           </li>
         </ul>
@@ -180,7 +180,7 @@ export const Navbar = () => {
           </Link>
           <Link
             className="py-5 border-b border-offblack text-center leading-[150%] tracking-neg5 text-offblack"
-            href="/#speakers"
+            href="/contributors"
           >
             Speakers
           </Link>
