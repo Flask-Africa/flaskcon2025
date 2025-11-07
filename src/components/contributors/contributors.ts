@@ -37,7 +37,7 @@ import letterV from "@/assets/images/contributors/letterV.png";
 
 import asterisk from "@/assets/svg/asterisk.svg";
 import arrows from "@/assets/svg/arrows.svg";
-import star from "@/assets/svg/star.svg";
+import star from "@/assets/svg/star-con.svg";
 import semis from "@/assets/svg/semis.svg";
 import cross from "@/assets/svg/cross.svg";
 import diamonds from "@/assets/svg/diamonds.svg";

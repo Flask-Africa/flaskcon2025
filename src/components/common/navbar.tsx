@@ -52,6 +52,11 @@ export const Navbar = () => {
         mask: "words",
         wordsClass: "words",
       });
+      const agendaSplit = SplitText.create(".agenda-link", {
+        type: "words",
+        mask: "words",
+        wordsClass: "words",
+      });
 
       const tl = gsap.timeline({ paused: true });
       tl.to(containerRef.current, {
@@ -61,6 +66,9 @@ export const Navbar = () => {
           autoAlpha: 1,
         })
         .set(".speakers-link", {
+          autoAlpha: 1,
+        })
+        .set(".agenda-link", {
           autoAlpha: 1,
         })
         .fromTo(
@@ -76,6 +84,18 @@ export const Navbar = () => {
         )
         .fromTo(
           speakerSplit.words,
+          {
+            yPercent: 100,
+            ease: "power4",
+          },
+          {
+            yPercent: 0,
+            ease: "power4",
+          },
+          "<0.2"
+        )
+        .fromTo(
+          agendaSplit.words,
           {
             yPercent: 100,
             ease: "power4",
@@ -105,6 +125,14 @@ export const Navbar = () => {
           <Logo className="w-[140px] lg:w-auto" />
         </Link>
         <ul className="gap-x-5 hidden md:flex">
+          <li>
+            <Link
+              className="agenda-link invisible py-5 text-center leading-[150%] tracking-neg5 text-offblack font-inktrap"
+              href="/agenda"
+            >
+              Agenda
+            </Link>
+          </li>
           <li>
             <Link
               className="events-link invisible py-5 text-center leading-[150%] tracking-neg5 text-offblack font-inktrap"
@@ -146,9 +174,9 @@ export const Navbar = () => {
         <div className="flex flex-col font-neue">
           <Link
             className="py-5 border-b border-offblack text-center leading-[150%] tracking-neg5 text-offblack"
-            href="/"
+            href="/agenda"
           >
-            Event Schedule
+            Agenda
           </Link>
           <Link
             className="py-5 border-b border-offblack text-center leading-[150%] tracking-neg5 text-offblack"
