@@ -116,7 +116,7 @@ export const Navbar = () => {
   return (
     <nav
       ref={containerRef}
-      className="fixed -top-20 md:-top-40 left-1/2 -translate-x-1/2 w-[80vw] max-w-[553px] z-80 lg:max-w-[600px]"
+      className="fixed -top-20 md:-top-40 left-1/2 -translate-x-1/2 w-[80vw] max-w-[553px] z-80 lg:max-w-[700px]"
       onClick={() => setIsMenuOpen(false)}
     >
       <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-black w-[93%] h-full rounded-full" />

@@ -1,6 +1,5 @@
-"use client";
-
 import type { Metadata } from "next";
+
 import "./globals.css";
 
 import { hepta, manrope, ppNeue, ppNeueInktrap } from "@/utils/fonts";
@@ -8,9 +7,8 @@ import { Navbar } from "@/components/common/navbar";
 import { Footer } from "@/components/common/footer";
 import { LayoutContainer } from "@/components/layout/layout-container";
 import { PreloaderContextProvider } from "@/context/preloader-context";
-import { usePathname } from "next/navigation";
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: "Flaskcon 2025",
   description: "Connect, Learn and Innovate with Flask.",
 };
@@ -20,9 +18,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  const hideFooter = pathname === "/contributors";
-
   return (
     <html lang="en">
       <body
@@ -32,7 +27,7 @@ export default function RootLayout({
           <LayoutContainer>
             <Navbar />
             {children}
-            {!hideFooter && <Footer />}
+            <Footer />
           </LayoutContainer>
         </PreloaderContextProvider>
       </body>
