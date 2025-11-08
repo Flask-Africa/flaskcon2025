@@ -105,7 +105,6 @@ export const AgendaTimeline = () => {
           time="5:20PM - 5:30PM"
           talk="Closing Keynote: Flask Today and Tomorrow"
         />
-        <TimelineItem time="3:40PM - 5:00PM" talk="Systems Design Contest" />
       </div>
     </section>
   );
