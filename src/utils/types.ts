@@ -5,3 +5,9 @@ export type SpeakerIT = {
   name: string;
   talk?: string;
 };
+
+export interface TeamMemberIT {
+  image: StaticImageData;
+  name: string;
+  position: string;
+}

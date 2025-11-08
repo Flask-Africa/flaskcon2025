@@ -63,6 +63,10 @@
   overflow: hidden;
 }
 
+.team .rfm-child {
+  margin-right: 1rem;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -88,5 +92,11 @@
   .text-outline-black {
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .team .rfm-child {
+    margin-right: 60px;
   }
 }

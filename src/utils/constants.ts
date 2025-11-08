@@ -21,7 +21,17 @@ import seun from "@/assets/images/speakers/seun.jpg";
 import ubaydah from "@/assets/images/speakers/ubaydah.png";
 import victor from "@/assets/images/speakers/victor.jpg";
 import victory from "@/assets/images/speakers/victory.jpg";
-import { SpeakerIT } from "./types";
+
+import teamBabs from "@/assets/images/team/team-babs.png";
+import teamBiola from "@/assets/images/team/team-biola.png";
+import teamDro from "@/assets/images/team/team-dro.png";
+import teamFortune from "@/assets/images/team/team-fortune.png";
+import teamIfe from "@/assets/images/team/team-ife.png";
+import teamMustapha from "@/assets/images/team/team-mustapha.png";
+import teamNancy from "@/assets/images/team/team-nancy.png";
+import teamOlamide from "@/assets/images/team/team-olamide.png";
+
+import { SpeakerIT, TeamMemberIT } from "./types";
 
 export const speakers: SpeakerIT[] = [
   {
@@ -155,5 +165,48 @@ export const hosts: SpeakerIT[] = [
     image: adaeze,
     name: "Adaeze Chukwu",
     talk: "Head of Operations @ Spentrail ",
+  },
+];
+
+export const teamMembers: TeamMemberIT[] = [
+  {
+    image: teamBabs,
+    name: "Babatunde Hammed",
+    position: "Team Lead",
+  },
+  {
+    image: teamBiola,
+    name: "Awoyemi Abiola",
+    position: "Software Engineer",
+  },
+  {
+    image: teamDro,
+    name: "Oluwaseunbabara Taiwo",
+    position: "Frontend Engineer",
+  },
+  {
+    image: teamFortune,
+    name: "Fortune Adekogbe",
+    position: "Organizer",
+  },
+  {
+    image: teamOlamide,
+    name: "Sanusi Olamide",
+    position: "Designer",
+  },
+  {
+    image: teamIfe,
+    name: "Ifeoluwa Adebanjo",
+    position: "UI/UX Designer",
+  },
+  {
+    image: teamMustapha,
+    name: "Mustapha Olawale",
+    position: "Team Lead",
+  },
+  {
+    image: teamNancy,
+    name: "Nancy Areola",
+    position: "Organizer",
   },
 ];
