@@ -136,9 +136,9 @@ export const Navbar = () => {
           <li>
             <Link
               className="events-link invisible py-5 text-center leading-[150%] tracking-neg5 text-offblack font-inktrap"
-              href="/sponsor"
+              href="/team"
             >
-              Sponsorship
+              Contributors
             </Link>
           </li>
           <li>
@@ -146,7 +146,7 @@ export const Navbar = () => {
               className="speakers-link invisible py-5 text-center leading-[150%] tracking-neg5 text-offblack font-inktrap"
               href="/contributors"
             >
-              Speakers & Contributors
+              Speakers
             </Link>
           </li>
         </ul>
@@ -183,6 +183,12 @@ export const Navbar = () => {
             href="/contributors"
           >
             Speakers
+          </Link>
+          <Link
+            className="py-5 border-b border-offblack text-center leading-[150%] tracking-neg5 text-offblack"
+            href="/team"
+          >
+            Team
           </Link>
           <div className="py-5 text-center">
             <Link href="/sponsor" className="w-[185px] h-[59px] inline-block">
