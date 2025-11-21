@@ -173,7 +173,7 @@ export const ContributorTabs = () => {
 
   return (
     <section className="w-full border-t-2 border-black min-h-screen h-[150vh]">
-      <div className="md:px-2 lg:px-4 xl:px-16 max-w-[1440px] h-full mx-auto">
+      <div className="md:px-2 lg:px-4 xl:px-16 w-full h-full mx-auto">
         <div className="md:border-x-2 flex flex-col lg:flex-row h-full w-full items-stretch justify-start">
           <div className="hidden lg:flex flex-col w-[15%] h-auto lg:h-full border-r-2 border-black overflow-hidden relative">
             <div className="animate-marquee-vertical hidden lg:flex flex-col">
@@ -202,43 +202,6 @@ export const ContributorTabs = () => {
                   </div>
                 ))}
             </div>
-          </div>
-
-          <div className="lg:hidden w-full">
-            <Marquee
-              speed={40}
-              gradient={false}
-              pauseOnHover
-              className="flex items-center"
-            >
-              {contributorsData.map((contributor, index) => (
-                <div
-                  key={`contributor-mobile-${index}`}
-                  onClick={() => setActiveContributor(contributor)}
-                  className="h-[250px] w-[150px] border-y-2 border-r-2 border-black flex flex-col items-center cursor-pointer justify-start"
-                >
-                  <div className="w-full h-[70%] relative flex justify-center items-end overflow-hidden">
-                    <Image
-                      src={contributor.image}
-                      alt={contributor.name}
-                      className="w-full h-full object-cover"
-                    />
-                    {activeContributor?.name !== contributor.name && (
-                      <div className="absolute top-0 left-0 w-full h-full bg-[#ffffff] mix-blend-saturation origin-top transition-all ease-in duration-700 group-hover:h-0"></div>
-                    )}
-                  </div>
-
-                  <div className="flex items-center justify-center bg-black w-full h-[30%]">
-                    <Image
-                      src={contributor.iconSrc}
-                      alt=""
-                      width={30}
-                      height={30}
-                    />
-                  </div>
-                </div>
-              ))}
-            </Marquee>
           </div>
 
           <div className="w-full lg:w-[40%] min-h-[60vh] lg:h-full border-y-2 lg:border-y-0 lg:border-r-2 border-black relative flex items-center justify-center py-8 lg:py-0">
@@ -301,7 +264,7 @@ export const ContributorTabs = () => {
                 className="relative w-full z-30 flex items-center justify-center px-4"
                 ref={nameRef}
               >
-                <h1 className="relative z-20 text-outline-black mx-4 lg:mx-20 text-[40px] md:text-[50px] lg:text-[60px] uppercase text-center text-white font-inktrap font-extrabold leading-tight">
+                <h1 className="relative z-20 text-outline-black mx-16 lg:mx-20 text-[40px] md:text-[50px] lg:text-[60px] uppercase text-center text-white font-inktrap font-extrabold leading-tight">
                   {displayedContributor?.name}
                 </h1>
                 <h1 className="absolute top-1 lg:top-2 text-outline-black left-1/2 -translate-x-1/2 z-10 text-[40px] md:text-[50px] lg:text-[60px] uppercase text-center text-[#1B1B1B] font-inktrap font-extrabold leading-tight">
@@ -356,7 +319,7 @@ export const ContributorTabs = () => {
                 </div>
               </Marquee>
             </div>
-            <div className="w-full min-h-[30vh] overflow-auto lg:h-[44%] bg-black p-6 md:p-8 lg:p-10 flex items-start">
+            <div className="w-full min-h-[30vh] overflow-auto h-[400px] bg-black p-6 md:p-8 lg:p-10 flex items-start">
               <p
                 ref={descriptionRef}
                 className="font-neue text-base md:text-lg lg:text-[21px] text-white font-normal leading-relaxed"
@@ -364,6 +327,42 @@ export const ContributorTabs = () => {
                 {displayedContributor?.description}
               </p>
             </div>
+          </div>
+          <div className="lg:hidden w-full">
+            <Marquee
+              speed={40}
+              gradient={false}
+              pauseOnHover
+              className="flex items-center"
+            >
+              {contributorsData.map((contributor, index) => (
+                <div
+                  key={`contributor-mobile-${index}`}
+                  onClick={() => setActiveContributor(contributor)}
+                  className="h-[250px] w-[150px] border-y-2 border-r-2 border-black flex flex-col items-center cursor-pointer justify-start"
+                >
+                  <div className="w-full h-[70%] relative flex justify-center items-end overflow-hidden bg-white">
+                    <Image
+                      src={contributor.image}
+                      alt={contributor.name}
+                      className="w-full h-full object-cover"
+                    />
+                    {activeContributor?.name !== contributor.name && (
+                      <div className="absolute top-0 left-0 w-full h-full bg-[#ffffff] mix-blend-saturation origin-top transition-all ease-in duration-700 group-hover:h-0"></div>
+                    )}
+                  </div>
+
+                  <div className="flex items-center justify-center bg-black w-full h-[30%]">
+                    <Image
+                      src={contributor.iconSrc}
+                      alt=""
+                      width={30}
+                      height={30}
+                    />
+                  </div>
+                </div>
+              ))}
+            </Marquee>
           </div>
         </div>
       </div>
