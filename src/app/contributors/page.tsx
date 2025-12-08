@@ -4,7 +4,7 @@ import { ContributorTabs } from "@/components/contributors/contributor-tabs";
 const SpeakersPage = () => {
   return (
     <ReactLenis root>
-      <div className="pt-32 max-w-[1440px] mx-auto">
+      <div className="pt-32 w-full">
         <ContributorTabs />
       </div>
     </ReactLenis>
